@@ -1,2 +1,4 @@
 Flask==2.2.2
 google-cloud-datastore==2.8.1
+requests==2.27.1
+google-auth==2.11.1
