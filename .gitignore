@@ -2,3 +2,6 @@ env.py
 __pycache__/
 node_modules/
 notes.md
+env/
+/setup.cfg
+.gcloudignore

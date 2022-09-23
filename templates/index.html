@@ -1,0 +1,23 @@
+<!doctype html>
+<!--
+glist webapp
+A simple app for the tracking of grocery list
+-->
+
+<html>
+<head>
+  <title>glist</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>Hello World</h1>
+
+  <h2>Last 10 visits</h2>
+  {% for time in times %}
+    <p>{{ time['timestamp'] }}</p>
+  {% endfor %}
+
+</body>
+</html>
