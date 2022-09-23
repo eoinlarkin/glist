@@ -1,71 +1,70 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--
 glist webapp
 A simple app for the tracking of grocery list
 -->
 
 <html>
-
-<head>
+  <head>
     <title>glist</title>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css"
+    />
 
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
 
-<body>
-
-        <!--    Firebase SDK -->
-        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-
-        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
-    
-           <script>
-           var config = {
-                       apiKey: "AIzaSyAX8I1q0fdnt-sV37AQOyarEXUlAb8H_uk",
-                       authDomain: "glist-gcp.firebaseapp.com",
-                       projectId: "glist-gcp",
-                       storageBucket: "glist-gcp.appspot.com",
-                       messagingSenderId: "857862522492",
-                       appId: "1:857862522492:web:c886b2cefa872a1ca2abf9",
-                       measurementId: "G-S1ZLN5Y7N7"
-                   };
-                   firebase.initializeApp(config);
-           </script>
-   
-
-
+  <body>
     <h1>Hello World</h1>
-
 
     <div id="firebaseui-auth-container"></div>
 
-    <button id="sign-out" hidden=true>Sign Out</button>
+    <button id="sign-out" hidden="true">Sign Out</button>
 
-    <div id="login-info" hidden=true>
-        <h2>Login info:</h2>
-        {% if user_data %}
-        <dl>
-            <dt>Name</dt>
-            <dd>{{ user_data['name'] }}</dd>
-            <dt>Email</dt>
-            <dd>{{ user_data['email'] }}</dd>
-            <dt>Last 10 visits</dt>
-            <dd>
-                {% for time in times %}
-                <p>{{ time['timestamp'] }}</p>
-                {% endfor %} </dd>
-        </dl>
-        {% elif error_message %}
-        <p>Error: {{ error_message }}</p>
-        {% endif %}
+    <div id="login-info" hidden="true">
+      <h2>Login info:</h2>
+      {% if user_data %}
+      <dl>
+        <dt>Name</dt>
+        <dd>{{ user_data['name'] }}</dd>
+        <dt>Email</dt>
+        <dd>{{ user_data['email'] }}</dd>
+        <dt>Last 10 visits</dt>
+        <dd>
+          {% for time in times %}
+          <p>{{ time['timestamp'] }}</p>
+          {% endfor %}
+        </dd>
+      </dl>
+      {% elif error_message %}
+      <p>Error: {{ error_message }}</p>
+      {% endif %}
     </div>
 
+    <!--    Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
 
-
-</body>
-
+    <script>
+      var config = {
+        apiKey: "AIzaSyAX8I1q0fdnt-sV37AQOyarEXUlAb8H_uk",
+        authDomain: "glist-gcp.firebaseapp.com",
+        projectId: "glist-gcp",
+        storageBucket: "glist-gcp.appspot.com",
+        messagingSenderId: "857862522492",
+        appId: "1:857862522492:web:c886b2cefa872a1ca2abf9",
+        measurementId: "G-S1ZLN5Y7N7",
+      };
+      firebase.initializeApp(config);
+    </script>
+  </body>
 </html>
