@@ -12,3 +12,5 @@ indexes:
     direction: desc
   - name: important
     direction: desc
+  - name: done
+    direction: desc
