@@ -30,11 +30,40 @@ A simple app for the tracking of grocery list
     <button id="sign-out" hidden="true">Sign Out</button>
 
     <div id="login-info" hidden="true">
+
+        <!--    Add Item Form -->
+    <div>
+      <h2>Add Item Form</h2>
+      
+      <form action="{{ url_for('add_glist_item') }}" method="post">
+        <div><textarea name="content" class="input-block-level" rows="3"></textarea></div>
+        <div><input type="submit" class="" value="Add to List"></div>
+      </form>
+    </div>
+
+            <!--    Display list -->
+            <h2>Shopping List:</h2>
+            {% if user_data %}
+            <dl>
+
+              <dd>
+                {% for item in items %}
+                <p>{{ item['item_name'] }}</p>
+                {% endfor %}
+              </dd>
+
+            {% endif %}
+          </div>
+
+
+
+
+
       <h2>Login info:</h2>
       {% if user_data %}
       <dl>
         <dt>Name</dt>
-        <dd>{{ user_data['name'] }}</dd>
+        <dd>{{ user_data['name'] }}</dd>#
         <dt>Email</dt>
         <dd>{{ user_data['email'] }}</dd>
         <dt>Last 10 visits</dt>

@@ -1,0 +1,14 @@
+indexes:
+
+- kind: visit
+  ancestor: yes
+  properties:
+  - name: timestamp
+    direction: desc
+- kind: list_item
+  ancestor: yes
+  properties:
+  - name: item_name
+    direction: desc
+  - name: important
+    direction: desc
