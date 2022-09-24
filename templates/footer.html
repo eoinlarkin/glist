@@ -1,0 +1,38 @@
+<!-- Bottom footer with contact links-->
+<footer>
+  <div>
+    <div>
+      <!-- App Title  -->
+      <p>glist</p>
+
+      <!-- User Access Logging  -->
+      <div>
+        {% if user_data %}
+        <p>You are logged in under the account: {{ user_data['email'] }}</p>
+
+        <p>
+          {% for time in times %} The last activity from this account was at {{
+          time['timestamp'] }} {% endfor %}
+        </p>
+
+        {% elif error_message %}
+        <p>Error: {{ error_message }}</p>
+        {% endif %} 
+      </div>
+    </div>
+  </div>
+  <!-- Attributions  -->
+  <div>
+    <p>
+      Design and code by
+      <a
+        href=" https://github.com/eoinlarkin/ "
+        target=" _blank "
+        rel=" noopener "
+        >Eoin Larkin</a
+      >
+    </p>
+
+    <p>Made with LOVE in D7</p>
+  </div>
+</footer>

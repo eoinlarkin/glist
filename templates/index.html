@@ -49,34 +49,24 @@ A simple app for the tracking of grocery list
               <dd>
                 {% for item in items %}
                 <p>{{ item['item_name'] }}</p>
+                <p>{{ item.key.id }}</p>    
+                <p>{{ item.key }}</p>
+                <a href="{{ url_for('delete_glist_item', item_id=item.key.id) }}" 
+                class="">
+                Delete
+                </a> 
+
+
                 {% endfor %}
               </dd>
 
             {% endif %}
           </div>
 
+          {% include 'footer.html' %}
 
 
 
-
-      <h2>Login info:</h2>
-      {% if user_data %}
-      <dl>
-        <dt>Name</dt>
-        <dd>{{ user_data['name'] }}</dd>#
-        <dt>Email</dt>
-        <dd>{{ user_data['email'] }}</dd>
-        <dt>Last 10 visits</dt>
-        <dd>
-          {% for time in times %}
-          <p>{{ time['timestamp'] }}</p>
-          {% endfor %}
-        </dd>
-      </dl>
-      {% elif error_message %}
-      <p>Error: {{ error_message }}</p>
-      {% endif %}
-    </div>
 
     <!--    Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
