@@ -1,6 +1,10 @@
 window.addEventListener('load', function () {
     document.getElementById('sign-out').onclick = function () {
       firebase.auth().signOut();
+      //console.log('reloading page')
+      window.location.href = "/"
+      document.cookie = "token="
+      //window.location.reload(true);
     };
   
     // FirebaseUI config.
@@ -21,7 +25,7 @@ window.addEventListener('load', function () {
       tosUrl: '<your-tos-url>'
     };
   
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged(function (user) {     
       if (user) {
         // User is signed in, so display the "sign out" button and login info.
         document.getElementById('sign-out').hidden = false;
@@ -35,7 +39,7 @@ window.addEventListener('load', function () {
           // user information.
           document.cookie = "token=" + token;
         });
-      } else {
+      } else {       
         // User is signed out.
         // Initialize the FirebaseUI Widget using Firebase.
         var ui = new firebaseui.auth.AuthUI(firebase.auth());

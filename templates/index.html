@@ -5,66 +5,27 @@ A simple app for the tracking of grocery list
 -->
 
 <html>
-  <head>
-    <title>glist</title>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css"
-    />
 
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-  </head>
+<head>
+  <title>glist</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
 
-  <body>
-    <h1>Hello World</h1>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
 
-    <div id="firebaseui-auth-container"></div>
+<body>
+  <div id="firebaseui-auth-container"></div>
+  <button id="sign-out" hidden="true">Sign Out</button>
 
-    <button id="sign-out" hidden="true">Sign Out</button>
-
-    <div id="login-info" hidden="true">
-
-        <!--    Add Item Form -->
-    <div>
-      <h2>Add Item Form</h2>
-      
-      <form action="{{ url_for('add_glist_item') }}" method="post">
-        <div><textarea name="content" class="input-block-level" rows="3"></textarea></div>
-        <div><input type="submit" class="" value="Add to List"></div>
-      </form>
-    </div>
-
-            <!--    Display list -->
-            <h2>Shopping List:</h2>
-            {% if user_data %}
-            <dl>
-
-              <dd>
-                {% for item in items %}
-                <p>{{ item['item_name'] }}</p>
-                <p>{{ item.key.id }}</p>    
-                <p>{{ item.key }}</p>
-                <a href="{{ url_for('delete_glist_item', item_id=item.key.id) }}" 
-                class="">
-                Delete
-                </a> 
+  <div id="login-info" hidden="true">
+  {% include 'glist.html' %}
 
 
-                {% endfor %}
-              </dd>
-
-            {% endif %}
-          </div>
-
-          {% include 'footer.html' %}
-
+  <footer>
+  {% include 'footer.html' %}
+  </footer>
 
 
 
@@ -85,5 +46,6 @@ A simple app for the tracking of grocery list
       };
       firebase.initializeApp(config);
     </script>
-  </body>
+  </div>
+</body>
 </html>
