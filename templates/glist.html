@@ -1,31 +1,79 @@
        <!--    Add Item Form -->
        <div>
-        <h2>Add Item Form</h2>
+
+        <div class="grid place-items-center">
+        <form action="{{ url_for('add_glist_item') }}" method="post" class="w-full max-w-sm">
+            <div class="flex items-center border-b border-fuchsia-700 py-2">
+              <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="I'm feeling lucky" aria-label="shopping-item" name="content">
+              <button class="flex-shrink-0 bg-fuchsia-700 hover:bg-teal-700 border-fuchsia-700 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">
+                Add to List
+              </button>
+            </div>
+          </form>
+        </div>
         
-        <form action="{{ url_for('add_glist_item') }}" method="post">
-          <div><textarea name="content" class="input-block-level" rows="3"></textarea></div>
-          <div><input type="submit" class="" value="Add to List"></div>
-        </form>
+
       </div>
   
               <!--    Display list -->
-              <h2>Shopping List:</h2>
-              {% if user_data %}
-              <dl>
-  
-                <dd>
-                  {% for item in items %}
-                  <p>{{ item['item_name'] }}</p>
-                  <p>{{ item.key.id }}</p>    
-                  <p>{{ item.key }}</p>
-                  <a href="{{ url_for('delete_glist_item', item_id=item.key.id) }}" 
-                  class="">
-                  Delete
-                  </a> 
-  
-  
-                  {% endfor %}
-                </dd>
-  
-              {% endif %}
+
+               <div class="overflow-x-auto relative grid place-items-center">
+                <table class="w-full max-w-sm text-sm text-left text-teal-700">
+                    
+ 
+                    <thead class="text-xs text-fuchsia-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+
+                        <tr>
+                        <th colspan="4" class="py-3 px-6 text-center">
+                            Shopping List
+                        </th>
+                    </tr>
+
+                        <tr>
+
+
+                            <th scope="col" class="py-3 px-6">
+                                Item
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Important
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Done
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Delete
+                            </th>
+                        </tr>
+                    </thead>
+                    {% if user_data %}
+                    {% for item in items %}  
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ item['item_name'] }}
+                            </th>
+                            <td class="py-4 px-6">
+                                TBC
+                            </td>
+                            <td class="py-4 px-6">
+                                TBC
+                            </td>
+                            <td class="py-4 px-6">
+                                <a href="{{ url_for('delete_glist_item', item_id=item.key.id) }}" 
+                                class="">
+                                Delete
+                                </a> 
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                    {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+
+
+
             </div>

@@ -60,6 +60,17 @@ def fetch_glist_items(email, limit):
     return items
 
 
+@app.route("/login")
+def login():
+    # Verify Firebase auth.
+    check_auth = user_authenticated()
+
+    if check_auth["auth"] is True:
+        return redirect(url_for("root"))
+
+    return render_template("login.html")
+
+
 @app.route("/")
 def root():
     error_message = None
@@ -95,9 +106,12 @@ def add_glist_item():
     if request.method == "POST":
 
         if check_auth["auth"] is True:
+            item_name = request.form.get("content")
+            if item_name == '':
+                item_name = "I'm feeling lucky"
 
             item = {
-                "item_name": request.form.get("content"),
+                "item_name": item_name,
                 "important": 0,
                 "done": 0,
             }

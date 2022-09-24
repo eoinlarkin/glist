@@ -1,0 +1,33 @@
+<head>
+    <title>glist</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+    <div id="firebaseui-auth-container"></div>
+    <div>
+
+        <!--    Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+
+        <script>
+            var config = {
+                apiKey: "AIzaSyAX8I1q0fdnt-sV37AQOyarEXUlAb8H_uk",
+                authDomain: "glist-gcp.firebaseapp.com",
+                projectId: "glist-gcp",
+                storageBucket: "glist-gcp.appspot.com",
+                messagingSenderId: "857862522492",
+                appId: "1:857862522492:web:c886b2cefa872a1ca2abf9",
+                measurementId: "G-S1ZLN5Y7N7",
+            };
+            firebase.initializeApp(config);
+        </script>
+    </div>
+</body>
+
+</html>

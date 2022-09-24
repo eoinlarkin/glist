@@ -5,29 +5,24 @@ A simple app for the tracking of grocery list
 -->
 
 <html>
+  <head>
+    <title>glist</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
 
-<head>
-  <title>glist</title>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.4.0/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
 
-  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-</head>
-
-<body>
-  <div id="firebaseui-auth-container"></div>
-  <button id="sign-out" hidden="true">Sign Out</button>
-
-  <div id="login-info" hidden="true">
-  {% include 'glist.html' %}
-
-
-  <footer>
-  {% include 'footer.html' %}
-  </footer>
-
-
+  <body class="flex flex-col h-screen justify-between">
+    <div class="">
+      <header>{% include 'banner.html' %}</header>
+      <main>{% include 'glist.html' %}</main>
+      <footer class="">{% include 'footer.html' %}</footer>
+    </div>
 
     <!--    Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
@@ -46,6 +41,5 @@ A simple app for the tracking of grocery list
       };
       firebase.initializeApp(config);
     </script>
-  </div>
-</body>
+  </body>
 </html>

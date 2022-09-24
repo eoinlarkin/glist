@@ -1,12 +1,15 @@
 <!-- Bottom footer with contact links-->
-<footer>
-  <div>
-    <div>
+<footer class=" bottom-0 w-full text-center bg-gray-100 text-gray-600 ">
+    <div class=" flex justify-center items-center p-6 border-b border-gray-300 ">
+        <div class=" flex justify-center items-center p-6 border-b border-gray-300 ">
+
       <!-- App Title  -->
-      <p>glist</p>
+      <p class=" uppercase font-semibold mb-1 ">
+        glist
+      </p>
 
       <!-- User Access Logging  -->
-      <div>
+      <div class=" text-xs italic text-cyan-800 ">
         {% if user_data %}
         <p>You are logged in under the account: {{ user_data['email'] }}</p>
 
