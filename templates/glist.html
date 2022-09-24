@@ -66,18 +66,20 @@
                            {{ item['item_name'] }}
                        </th>
                        <td class="py-4 px-6">
-                        {% if '1' == item['important'] %}
-                        <i class="fa-regular fa-circle-exclamation text-lg flex justify-center"></i>
+                        <a href="{{ url_for('update_important_status', item_id=item.key.id) }}" class=" hover:text-red-900">
+                        {% if 1 == item['important'] %}
+                        <i class="fa-solid fa-star text-lg flex justify-center"></i>
                         {% else %}
-                        <i class="fa-solid fa-circle-exclamation text-lg flex justify-center"></i>
-                        {% endif %}
+                        <i class="fa-regular fa-star text-lg flex justify-center"></i>
+                        {% endif %}</a>
                     </td>
                        <td class="py-4 px-6">
-                        {% if '1' == item['done']  %}
+                        <a href="{{ url_for('update_important_status', item_id=item.key.id) }}" class=" hover:text-red-900">
+                        {% if 1 == item['done']  %}
                         <i class="fa-solid fa-square-check text-lg flex justify-center"></i>
                         {% else %}
                         <i class="fa-regular fa-square text-lg flex justify-center"></i>
-                        {% endif %}
+                        {% endif %}</a>
                        </td>
                        <td class="py-4 px-6">
                            <a href="{{ url_for('delete_glist_item', item_id=item.key.id) }}" class=" hover:text-red-900">

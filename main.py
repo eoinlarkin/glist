@@ -24,12 +24,10 @@ def user_authenticated():
                 id_token, firebase_request_adapter
             )
             out["auth"], out["user_info"] = True, claims
-            print(out)
             return out
         except ValueError as exc:
             out["err"], out["auth"] = str(exc), False
 
-    print(out)
     return out
 
 
@@ -59,7 +57,6 @@ def fetch_glist_items(email, limit_1=False):
         items = query.fetch(1)
     else:
         items = query.fetch()
-
 
     return items
 
@@ -148,6 +145,40 @@ def delete_glist_item(item_id):
         )
         datastore_client.delete(key)
 
+    return redirect(url_for("root"))
+
+
+def change_status(property, item_id, email):
+
+    # get entity
+    entity = datastore_client.get(
+        datastore_client.key("User", email, "list_item", int(item_id))
+    )
+
+    # printing important value
+    if entity[property] == 1:
+        new_val = 0
+    else:
+        new_val = 1
+
+    entity.update({property: new_val})
+
+    datastore_client.put(entity)
+
+
+@app.route("/change_important_status/<string:item_id>")
+def update_important_status(item_id):
+    check_auth = user_authenticated()
+    if check_auth["auth"] is True:
+        change_status("important", item_id, check_auth["user_info"]["email"])
+    return redirect(url_for("root"))
+
+
+@app.route("/change_done_status/<string:item_id>")
+def update_done_status(item_id):
+    check_auth = user_authenticated()
+    if check_auth["auth"] is True:
+        change_status("done", item_id, check_auth["user_info"]["email"])
     return redirect(url_for("root"))
 
 
