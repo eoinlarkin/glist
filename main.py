@@ -50,12 +50,16 @@ def fetch_times(email, limit):
     return times
 
 
-def fetch_glist_items(email, limit):
+def fetch_glist_items(email, limit_1=False):
     ancestor = datastore_client.key("User", email)
     query = datastore_client.query(kind="list_item", ancestor=ancestor)
     # query.order = ["-item_name"]
 
-    items = query.fetch(limit=limit)
+    if limit_1:
+        items = query.fetch(1)
+    else:
+        items = query.fetch()
+
 
     return items
 
@@ -86,7 +90,7 @@ def root():
             datetime.datetime.now(tz=datetime.timezone.utc),
         )
         times = fetch_times(check_auth["user_info"]["email"], 1)
-        items = fetch_glist_items(check_auth["user_info"]["email"], 10)
+        items = fetch_glist_items(check_auth["user_info"]["email"])
 
     return render_template(
         "index.html",
@@ -107,7 +111,7 @@ def add_glist_item():
 
         if check_auth["auth"] is True:
             item_name = request.form.get("content")
-            if item_name == '':
+            if item_name == "":
                 item_name = "I'm feeling lucky"
 
             item = {
@@ -143,6 +147,21 @@ def delete_glist_item(item_id):
             "User", check_auth["user_info"]["email"], "list_item", int(item_id)
         )
         datastore_client.delete(key)
+
+    return redirect(url_for("root"))
+
+
+@app.route("/clear_glist", methods=["POST"])
+def clear_glist():
+
+    check_auth = user_authenticated()
+
+    if check_auth["auth"] is True:
+
+        items = fetch_glist_items(check_auth["user_info"]["email"])
+
+        for item in items:
+            delete_glist_item(item.key.id)
 
     return redirect(url_for("root"))
 

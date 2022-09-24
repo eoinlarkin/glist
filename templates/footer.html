@@ -1,41 +1,32 @@
 <!-- Bottom footer with contact links-->
-<footer class=" bottom-0 w-full text-center bg-gray-100 text-gray-600 ">
-    <div class=" flex justify-center items-center p-6 border-b border-gray-300 ">
-        <div class=" flex justify-center items-center p-6 border-b border-gray-300 ">
+<footer class=" bottom-0 w-full text-center bg-gray-200 text-gray-600 ">
+    <div class=" flex justify-center items-center p-2 border-b border-gray-300">
+        <div class="flex justify-center items-center p-2">
 
-      <!-- App Title  -->
-      <p class=" uppercase font-semibold mb-1 ">
-        glist
-      </p>
+            <!-- User Access Logging  -->
+            <div class=" text-xs italic text-sky-800 ">
+                {% if user_data %}
+                <p>You are logged in under the account: <span class="text-cyan-600">{{ user_data['email'] }}</span>
+                </p>
 
-      <!-- User Access Logging  -->
-      <div class=" text-xs italic text-cyan-800 ">
-        {% if user_data %}
-        <p>You are logged in under the account: {{ user_data['email'] }}</p>
+                <p>
+                    {% for time in times %} The last activity from this account was at <span class="text-cyan-600">{{
+          time['timestamp'] }} </span> {% endfor %}
+                </p>
 
+                {% elif error_message %}
+                <p>Error: {{ error_message }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Attributions  -->
+    <div class=" flex justify-center items-center p-2 border-b border-gray-300">
         <p>
-          {% for time in times %} The last activity from this account was at {{
-          time['timestamp'] }} {% endfor %}
+            Design and code by
+            <a class="text-cyan-600 hover:text-sky-800" href=" https://github.com/eoinlarkin/ " target=" _blank "
+                rel=" noopener ">Eoin Larkin</a>
         </p>
 
-        {% elif error_message %}
-        <p>Error: {{ error_message }}</p>
-        {% endif %} 
-      </div>
     </div>
-  </div>
-  <!-- Attributions  -->
-  <div>
-    <p>
-      Design and code by
-      <a
-        href=" https://github.com/eoinlarkin/ "
-        target=" _blank "
-        rel=" noopener "
-        >Eoin Larkin</a
-      >
-    </p>
-
-    <p>Made with LOVE in D7</p>
-  </div>
 </footer>

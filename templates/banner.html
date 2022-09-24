@@ -1,5 +1,59 @@
-<h1 class="text-3xl font-bold underline text-yellow-600">
-    Hello world!
-  </h1>
+<!-- Hamburger Menu -->
+<!-- Template from following codepen: https://codepen.io/Zeeslag/pen/MWpLoKX -->
 
-<button id="sign-out">Sign Out</button>
+<nav class="px-2 sm:px-4 py-6 w-full max-w-4xl mx-auto">
+  <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <a class="text-3xl font-bold leading-none justify-start lowercase" href="#">GLIST </a>
+
+    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+
+  <div class="lg:hidden justify-end">
+    <button class="navbar-burger flex  text-sky-800 p-3">
+      <svg class="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <title>Hamburger Menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="text-sky-800 text-lg">
+  <ul class="hidden transform lg:flex ">
+    <li><button class="mr-8 uppercase  hover:text-cyan-600" >Export Data</button></li>
+    <li><button class=" uppercase hover:text-cyan-600" id="sign-out">Sign Out</button></li>
+  </ul>
+  </div>
+    
+
+    </div>
+    </div>
+
+</nav>
+
+<div class="navbar-menu relative z-50 hidden">
+  <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
+  <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+    <div class="flex items-center mb-8">
+      <a class="mr-auto text-3xl font-bold leading-none" href="#">GLIST
+
+      </a>
+      <button class="navbar-close">
+        <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg"
+          fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div>
+      <ul>
+        <li class="mb-1">
+          <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+            href="#">Sign Out</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </nav>
+</div>
+
+

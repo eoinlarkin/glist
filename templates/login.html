@@ -7,7 +7,19 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 
-<body>
+<nav class="px-2 sm:px-4 py-6 w-full max-w-4xl mx-auto">
+    <div class="container flex flex-wrap justify-between items-center mx-auto">
+      <a class="text-3xl font-bold leading-none justify-start lowercase" href="#">GLIST </a>
+      </div>
+    </nav>
+
+
+    <body class="flex flex-col h-screen justify-between">
+
+    <div>    
+
+        <p class="text-lg lowercase text-center text-gray-600 -mt-16 mb-8">a very simple grocery list tracker</p>    
+
     <div id="firebaseui-auth-container"></div>
     <div>
 
@@ -28,6 +40,11 @@
             firebase.initializeApp(config);
         </script>
     </div>
+
+</div>
+
+    <footer class="">{% include 'footer.html' %}</footer>
+
 </body>
 
 </html>
