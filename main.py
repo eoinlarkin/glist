@@ -2,7 +2,6 @@ import datetime
 import os
 from flask import (
     Flask,
-    session,
     render_template,
     request,
     redirect,
@@ -23,10 +22,10 @@ def user_authenticated():
     """
     Checks if user is authenticated
     If so, returns dict with claims
-    Otherwise session is set to None
+    Otherwise auth status is set to None
     """
     id_token = request.cookies.get("token")
-    out = {"user_info": None, "err": None}
+    out = {"user_info": None, "err": None, 'auth': None}
 
     if id_token:
         try:
@@ -34,8 +33,8 @@ def user_authenticated():
             claims = google.oauth2.id_token.verify_firebase_token(
                 id_token, firebase_request_adapter
             )
-            # set user session to user id
-            session["usr"] = claims["user_id"]
+            # set user atuh status to True
+            out["auth"] = True
 
             # store time of authentication check
             store_time(
@@ -50,7 +49,6 @@ def user_authenticated():
             out["err"] = str(exc)
             return out
 
-    session["usr"] = None
     return out
 
 
@@ -113,7 +111,7 @@ def root():
     # Verify Firebase auth.
     check_auth = user_authenticated()
 
-    if session["usr"]:
+    if check_auth["auth"]:
         times = fetch_times(check_auth["user_info"]["email"])
         items = fetch_glist_items(check_auth["user_info"]["email"])
 
@@ -131,8 +129,8 @@ def root():
 @app.route("/login")
 def login():
     """Render root if user authenticated, root otherwise"""
-    user_authenticated()
-    if session["usr"]:
+    check_auth = user_authenticated()
+    if check_auth["auth"]:
         return redirect(url_for("root"))
     return render_template("login.html")
 
@@ -176,7 +174,7 @@ def add_glist_item():
 def update_important_status(item_id):
     """Route for update Important status"""
     check_auth = user_authenticated()
-    if session["usr"]:
+    if check_auth["auth"]:
         switch_status("important", item_id, check_auth["user_info"]["email"])
     return redirect(url_for("root"))
 
@@ -185,7 +183,7 @@ def update_important_status(item_id):
 def update_done_status(item_id):
     """Route for update Done status"""
     check_auth = user_authenticated()
-    if session["usr"]:
+    if check_auth["auth"]:
         switch_status("done", item_id, check_auth["user_info"]["email"])
     return redirect(url_for("root"))
 
@@ -193,7 +191,6 @@ def update_done_status(item_id):
 @app.route("/signout")
 def signout():
     """Route for update Done status"""
-    session["usr"] = None
     return redirect(url_for("login"))
 
 
@@ -201,7 +198,7 @@ def signout():
 def delete_glist_item(item_id):
     """Delete entity from database if user authenticated"""
     check_auth = user_authenticated()
-    if session["usr"]:
+    if check_auth["auth"]:
         key = datastore_client.key(
             "User", check_auth["user_info"]["email"], "list_item", int(item_id)
         )
@@ -213,7 +210,7 @@ def delete_glist_item(item_id):
 def clear_glist():
     """Function to fully clear list"""
     check_auth = user_authenticated()
-    if session["usr"]:
+    if check_auth["auth"]:
         items = fetch_glist_items(check_auth["user_info"]["email"])
         for item in items:
             delete_glist_item(item.key.id)
