@@ -604,6 +604,10 @@ html {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
 }
@@ -672,6 +676,14 @@ html {
   margin-top: -4rem;
 }
 
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .block {
   display: block;
 }
@@ -720,6 +732,10 @@ html {
   width: 1.5rem;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .max-w-4xl {
   max-width: 56rem;
 }
@@ -730,6 +746,16 @@ html {
 
 .max-w-md {
   max-width: 28rem;
+}
+
+.max-w-xs {
+  max-width: 20rem;
+}
+
+.max-w-fit {
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
 }
 
 .flex-shrink-0 {
@@ -1081,6 +1107,14 @@ html {
 }
 
 @media (min-width: 768px) {
+  .md\:mr-3 {
+    margin-right: 0.75rem;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -1091,6 +1125,24 @@ html {
 
   .md\:max-w-6xl {
     max-width: 72rem;
+  }
+
+  .md\:max-w-lg {
+    max-width: 32rem;
+  }
+
+  .md\:max-w-md {
+    max-width: 28rem;
+  }
+
+  .md\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .md\:py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
   }
 
   .md\:text-2xl {
@@ -1111,6 +1163,11 @@ html {
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
