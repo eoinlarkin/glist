@@ -21,7 +21,7 @@ A grocery list tracker webapp built using Flask and hosted on [Google Cloud Plat
 - User activity indicator
 - Responsive layout
 
-## Database
+## Database Hierarchy
 Google Datastore is used for the storage of data. Data is stored in two distinct entity tables; `visit` and `list_item`. Both of these entities are stored under a parent key corresponding to the user's email address. Email address are stored in a further partent key of `User`.
 
 ### `list_item`
