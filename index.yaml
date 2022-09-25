@@ -14,3 +14,10 @@ indexes:
     direction: desc
   - name: done
     direction: desc
+- kind: list_item
+  ancestor: yes
+  properties:
+  - name: done
+  - name: important
+    direction: desc
+  - name: item_name 
