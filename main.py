@@ -53,7 +53,7 @@ def user_authenticated():
 
 
 def store_time(email, dt):
-    """Storing last login to Datastore"""
+    """Function to store last authentication query to Datastore"""
     entity = datastore.Entity(key=datastore_client.key("User", email, "visit"))
     entity.update({"timestamp": dt})
     datastore_client.put(entity)
@@ -65,7 +65,6 @@ def fetch_times(email, limit=1):
     query = datastore_client.query(kind="visit", ancestor=ancestor)
     query.order = ["-timestamp"]
     times = query.fetch(limit)
-
     return times
 
 
@@ -77,8 +76,6 @@ def fetch_glist_items(email):
     ancestor = datastore_client.key("User", email)
     query = datastore_client.query(kind="list_item", ancestor=ancestor)
     query.order = ["done", "-important", "item_name"]
-    # query.order = ["-item_name","-important","-done"]
-
     items = query.fetch()
     return items
 
@@ -190,7 +187,7 @@ def update_done_status(item_id):
 
 @app.route("/signout")
 def signout():
-    """Route for update Done status"""
+    """Route for signout"""
     return redirect(url_for("login"))
 
 
