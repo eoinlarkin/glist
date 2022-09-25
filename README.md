@@ -21,6 +21,25 @@ A grocery list tracker webapp built using Flask and hosted on [Google Cloud Plat
 - User activity indicator
 - Responsive layout
 
+## Database
+Google Datastore is used for the storage of data. Data is stored in two distinct entity tables; `visit` and `list_item`. Both of these entities are stored under a parent key corresponding to the user's email address. Email address are stored in a further partent key of `User`.
+
+### `list_item`
+Composed of three fields as follows:
+- `item_name`  
+    Used to track the name of the item on the grocery list
+- `done`  
+    Used to record if an item is done; can take a value of either `0` or `1`
+- `important`  
+    Used to record if an item is important; can take a value of either `0` or `1`
+
+
+### `visit`
+Used to record visits by user to the site. 
+- `timestamp`  
+    Records the visit timestamp
+
+
 ## Technologies
 
 - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
