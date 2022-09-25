@@ -24,7 +24,8 @@ A grocery list tracker webapp built using Flask and hosted on [Google Cloud Plat
 
 ## Demo
 
-![app-demo](/docs/glist_demo.gif)
+<img src="https://github.com/eoinlarkin/glist/raw/main/docs/glist_demo.gif"  height="250"/>
+
 
 ## Deployment
 
