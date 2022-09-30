@@ -15,7 +15,7 @@
                            </button>
                        </div>
                    </form>
-                   <form action="{{ url_for('clear_glist') }}" method="post" class="ml-1 md:ml-4 max-w-xs md:max-w-md">
+                   <form action="{{ url_for('clear_glist') }}" method="post" class="ml-1 md:ml-4 max-w-xs md:max-w-lg">
                        <div class="flex items-center border-b border-cyan-600 py-1">
                            <button
                                class="flex-shrink-0 bg-cyan-600 hover:bg-sky-800 border-cyan-600 hover:border-sky-800 border-4 text-white py-1 px-1 rounded text-xs md:text-xl"
@@ -30,7 +30,7 @@
        </div>
        <!--    Display list -->
        <div class="overflow-x-auto relative grid place-items-center mt-10">
-           <table class="w-full max-w-xs md:max-w-6xl text-lg md:text-3xl text-left text-sky-800">
+           <table class="w-full max-w-xs md:max-w-4xl lg:max-w-6xl text-lg md:text-3xl text-left text-sky-800">
 
                <thead class="text-xs md:text-3xl  text-cyan-600 lowercase bg-gray-200  ">
                    <tr>
@@ -39,20 +39,20 @@
                        </th>
                    </tr>
 
-                   </tr>
+    
                    <tr>
 
 
-                       <th scope="col" class="py-1 md:py-3 px-2 md:px-6">
+                       <th scope="col" class="py-1 md:py-3 px-2 md:px-4 lg:px-6">
                            Item
                        </th>
-                       <th scope="col" class="py-1 md:py-3 px-2 md:px-6 text-center">
+                       <th scope="col" class="py-1 md:py-3 px-2 md:px-4 lg:px-6 text-center">
                            Important
                        </th>
-                       <th scope="col" class="py-1 md:py-3 px-2 md:px-6 text-center">
+                       <th scope="col" class="py-1 md:py-3 px-2 md:px-4 lg:px-6 text-center">
                            Done
                        </th>
-                       <th scope="col" class="py-1 md:py-3 px-2 md:px-6 text-center">
+                       <th scope="col" class="py-1 md:py-3 px-2 md:px-4 lg:px-6 text-center">
                            Delete
                        </th>
                    </tr>
@@ -64,10 +64,10 @@
                <tbody>
                    <tr class="{% if 1 == item['done'] %} bg-yellow-200 {% else %} bg-white {% endif %} border-b">
 
-                       <td scope="row" class="py-1 md:py-3 px-2 md:px-6 text-gray-900 whitespace-nowrap">
+                       <td scope="row" class="py-1 md:py-3 px-2 md:px-4 lg:px-6 text-gray-900 whitespace-nowrap">
                            <span class="{% if 1 == item['done'] %} line-through {% endif %}">{{ item['item_name'] }}</span>
                        </td>
-                       <td class="py-1 md:py-3 px-2 md:px-6">
+                       <td class="py-1 md:py-3 px-2 md:px-4 lg:px-6">
                         <a href="{{ url_for('update_important_status', item_id=item.key.id) }}" class=" hover:text-red-900">
                         {% if 1 == item['important'] %}
                         <i class="fa-solid fa-star text-lg md:text-2xl flex justify-center"></i>
@@ -75,7 +75,7 @@
                         <i class="fa-regular fa-star text-lg md:text-2xl flex justify-center"></i>
                         {% endif %}</a>
                     </td>
-                       <td class="py-1 md:py-3 px-2 md:px-6">
+                       <td class="py-1 md:py-3 px-2 md:px-4 lg:px-6">
                         <a href="{{ url_for('update_done_status', item_id=item.key.id) }}" class=" hover:text-red-900">
                         {% if 1 == item['done']  %}
                         <i class="fa-solid fa-square-check text-lg md:text-2xl flex justify-center"></i>
@@ -83,7 +83,7 @@
                         <i class="fa-regular fa-square text-lg md:text-2xl flex justify-center"></i>
                         {% endif %}</a>
                        </td>
-                       <td class="py-1 md:py-3 px-2 md:px-6">
+                       <td class="py-1 md:py-3 px-2 md:px-4 lg:px-6">
                            <a href="{{ url_for('delete_glist_item', item_id=item.key.id) }}" class=" hover:text-red-900">
                             <i class="fa-solid fa-trash text-lg md:text-2xl flex justify-center"></i>
                            </a>
@@ -96,4 +96,3 @@
            </table>
        </div>
 
-       </div>

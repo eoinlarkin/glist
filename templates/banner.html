@@ -1,20 +1,16 @@
 <!-- Hamburger Menu -->
 <!-- Template from following codepen: https://codepen.io/Zeeslag/pen/MWpLoKX -->
+<body>
+<nav class="px-4 lg:px-6 py-6 relative flex justify-between items-center max-w-md md:max-w-6xl mx-auto">
+  <a class="text-3xl font-bold leading-none lowercase" href="#">glist
+  </a>
 
-<nav class="px-2 sm:px-4 py-6 w-full max-w-xs md:max-w-6xl mx-auto">
-  <div class="container flex flex-wrap justify-between items-center mx-auto">
-    <a class="text-4xl font-bold leading-none justify-start lowercase" href="#"
-      >GLIST
-    </a>
+  <div class="lg:hidden">
+      <button class="navbar-burger flex items-end text-sky-800 p-3">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
 
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <div class="lg:hidden justify-end">
-        <button class="navbar-burger flex text-sky-800 p-3">
-          <i class="fa-solid fa-bars text-2xl"></i>
-        </button>
-      </div>
-
-      <div class="text-sky-800 text-2xl">
         <ul class="hidden transform lg:flex">
           <!-- Placeholder Link for Export Data link -->
           <!-- <li><button class="mr-8 uppercase  hover:text-cyan-600" >Export Data</button></li> -->
@@ -27,9 +23,6 @@
             >
           </li>
         </ul>
-      </div>
-    </div>
-  </div>
 </nav>
 
 <div class="navbar-menu relative z-50 hidden">
@@ -58,3 +51,4 @@
     </div>
   </nav>
 </div>
+</body>
