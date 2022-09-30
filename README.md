@@ -1,7 +1,8 @@
 # glist
 
-A very simple grocery list tracker
+_A very simple grocery list tracker_
 
+Deployed site can be accessed [here](https://glist-gcp.nw.r.appspot.com/).
 
 - [Overview](#overview)
 - [Features](#features)
