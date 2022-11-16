@@ -1,6 +1,6 @@
 # glist
 
-[_A very simple grocery list tracker_](https://glist-gcp.nw.r.appspot.com/)
+[_A very simple grocery list tracker_](https://glist.larkin.ie/)
 
 - [Overview](#overview)
 - [Features](#features)
@@ -19,6 +19,11 @@ A grocery list tracker webapp built using Flask and hosted on [Google Cloud Plat
 - Batch delete ability
 - User activity indicator
 - Responsive layout
+
+## Demo
+
+<img src="https://github.com/eoinlarkin/glist/raw/main/docs/glist_demo.gif"  height="500"/>
+
 
 ## Database Hierarchy
 Google Datastore is used for the storage of data. Data is stored in two distinct entity tables; `visit` and `list_item`. Both of these entities are stored under a parent key corresponding to the user's email address. Email address are stored in a further partent key of `User`.
@@ -48,9 +53,6 @@ Used to record visits by user to the site.
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Font Awesome](https://fontawesome.com/)
 
-## Demo
-
-<img src="https://github.com/eoinlarkin/glist/raw/main/docs/glist_demo.gif"  height="400"/>
 
 ## Deployment
 
